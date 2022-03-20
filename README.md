@@ -1,6 +1,6 @@
 # extract-envoy
 
-Extracts `envoy.exe` from the Envoy Proxy Windows container. `envoy.exe` can be found as an artifact of the build.
+Extracts `envoy.exe` from the Envoy Proxy Windows container. `envoy.exe` can be found in Releases.
 
 ## How it works
 1. Downloads static `docker.exe` and `dockerd.exe` for Windows
@@ -10,4 +10,4 @@ Extracts `envoy.exe` from the Envoy Proxy Windows container. `envoy.exe` can be 
 4. Creates a container of the Envoy image
 5. Copies `envoy.exe` out of the container
 6. Deletes the container
-6. Uploads `envoy.exe` as a build artifact
+6. Uploads `envoy.exe` as a release
