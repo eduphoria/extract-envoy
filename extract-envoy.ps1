@@ -22,6 +22,7 @@ Write-Output "Extracting from $dockerImage"
 # Get full paths
 $dockerPath = Join-Path -Path $PSScriptRoot -ChildPath "docker\docker.exe"
 $envoyDestPath = Join-Path -Path $PSScriptRoot -ChildPath "envoy.exe"
+$envoyZipDestPath = Join-Path -Path $PSScriptRoot -ChildPath "envoy.zip"
 
 # Install static docker.exe and dockerd.exe
 if (-not (Test-Path -Path $dockerPath)) {
@@ -73,6 +74,8 @@ Write-Output "Creating container"
 & $dockerPath create -ti --name envoy $dockerImage powershell | Out-Null
 Write-Output "Copying file to $envoyDestPath"
 & $dockerPath cp envoy:"C:\Program Files\envoy\envoy.exe" $envoyDestPath
+Write-Output "Compressing to $envoyZipDestPath"
+Compress-Archive -Path $envoyDestPath -DestinationPath $envoyZipDestPath
 Write-Output "Removing container"
 & $dockerPath rm --force envoy | Out-Null
 
