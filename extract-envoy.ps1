@@ -1,5 +1,3 @@
-# Requires Windows Features? Containers? Hyper-V?
-
 param(
   [switch]$Clean,     # Remove the Docker image at the end
   [switch]$Wait       # Wait for a key press before shutting down the Docker daemon
